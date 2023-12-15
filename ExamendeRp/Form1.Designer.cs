@@ -35,7 +35,7 @@ namespace ExamendeRp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 513);
+            this.ClientSize = new System.Drawing.Size(862, 613);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
