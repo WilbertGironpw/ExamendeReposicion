@@ -409,10 +409,10 @@ namespace ExamendeRp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tbl_vehiculosRow Addtbl_vehiculosRow(int IdVehiculo, string marca, string modelo, int year, string num_motor, string num_chasis) {
+            public tbl_vehiculosRow Addtbl_vehiculosRow(string marca, string modelo, int year, string num_motor, string num_chasis) {
                 tbl_vehiculosRow rowtbl_vehiculosRow = ((tbl_vehiculosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        IdVehiculo,
+                        null,
                         marca,
                         modelo,
                         year,
@@ -472,7 +472,11 @@ namespace ExamendeRp {
                 base.Columns.Add(this.columnnum_chasis);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdVehiculo}, true));
+                this.columnIdVehiculo.AutoIncrement = true;
+                this.columnIdVehiculo.AutoIncrementSeed = -1;
+                this.columnIdVehiculo.AutoIncrementStep = -1;
                 this.columnIdVehiculo.AllowDBNull = false;
+                this.columnIdVehiculo.ReadOnly = true;
                 this.columnIdVehiculo.Unique = true;
                 this.columnmarca.AllowDBNull = false;
                 this.columnmarca.MaxLength = 2147483647;
@@ -858,9 +862,9 @@ namespace ExamendeRp.DatasetAdmTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[tbl_vehiculos] WHERE (([IdVehiculo] = @Original_IdVehiculo) AN" +
-                "D ([year] = @Original_year) AND ([num_motor] = @Original_num_motor) AND ([num_ch" +
-                "asis] = @Original_num_chasis))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [tbl_vehiculos] WHERE (([IdVehiculo] = @Original_IdVehiculo) AND ([ye" +
+                "ar] = @Original_year) AND ([num_motor] = @Original_num_motor) AND ([num_chasis] " +
+                "= @Original_num_chasis))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdVehiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdVehiculo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -868,10 +872,9 @@ namespace ExamendeRp.DatasetAdmTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_num_chasis", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "num_chasis", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[tbl_vehiculos] ([IdVehiculo], [marca], [modelo], [year], [num_motor], [num_chasis]) VALUES (@IdVehiculo, @marca, @modelo, @year, @num_motor, @num_chasis);
-SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos WHERE (IdVehiculo = @IdVehiculo)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [tbl_vehiculos] ([marca], [modelo], [year], [num_motor], [num_chasis]) VALUES (@marca, @modelo, @year, @num_motor, @num_chasis);
+SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos WHERE (IdVehiculo = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdVehiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdVehiculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@marca", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -879,10 +882,9 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@num_chasis", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "num_chasis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[tbl_vehiculos] SET [IdVehiculo] = @IdVehiculo, [marca] = @marca, [modelo] = @modelo, [year] = @year, [num_motor] = @num_motor, [num_chasis] = @num_chasis WHERE (([IdVehiculo] = @Original_IdVehiculo) AND ([year] = @Original_year) AND ([num_motor] = @Original_num_motor) AND ([num_chasis] = @Original_num_chasis));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tbl_vehiculos] SET [marca] = @marca, [modelo] = @modelo, [year] = @year, [num_motor] = @num_motor, [num_chasis] = @num_chasis WHERE (([IdVehiculo] = @Original_IdVehiculo) AND ([year] = @Original_year) AND ([num_motor] = @Original_num_motor) AND ([num_chasis] = @Original_num_chasis));
 SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos WHERE (IdVehiculo = @IdVehiculo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdVehiculo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdVehiculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@marca", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelo", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -892,6 +894,7 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_num_motor", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "num_motor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_num_chasis", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "num_chasis", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdVehiculo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdVehiculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -907,8 +910,8 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM dbo.tbl_vehicu" +
-                "los";
+            this._commandCollection[0].CommandText = "SELECT        IdVehiculo, marca, modelo, year, num_motor, num_chasis\r\nFROM       " +
+                "     tbl_vehiculos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1004,32 +1007,31 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int IdVehiculo, string marca, string modelo, int year, string num_motor, string num_chasis) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IdVehiculo));
+        public virtual int Insert(string marca, string modelo, int year, string num_motor, string num_chasis) {
             if ((marca == null)) {
                 throw new global::System.ArgumentNullException("marca");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(marca));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(marca));
             }
             if ((modelo == null)) {
                 throw new global::System.ArgumentNullException("modelo");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(modelo));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(modelo));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(year));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(year));
             if ((num_motor == null)) {
                 throw new global::System.ArgumentNullException("num_motor");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(num_motor));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(num_motor));
             }
             if ((num_chasis == null)) {
                 throw new global::System.ArgumentNullException("num_chasis");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(num_chasis));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(num_chasis));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1051,47 +1053,47 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int IdVehiculo, string marca, string modelo, int year, string num_motor, string num_chasis, int Original_IdVehiculo, int Original_year, string Original_num_motor, string Original_num_chasis) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IdVehiculo));
+        public virtual int Update(string marca, string modelo, int year, string num_motor, string num_chasis, int Original_IdVehiculo, int Original_year, string Original_num_motor, string Original_num_chasis, int IdVehiculo) {
             if ((marca == null)) {
                 throw new global::System.ArgumentNullException("marca");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(marca));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(marca));
             }
             if ((modelo == null)) {
                 throw new global::System.ArgumentNullException("modelo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(modelo));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(modelo));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(year));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(year));
             if ((num_motor == null)) {
                 throw new global::System.ArgumentNullException("num_motor");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(num_motor));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(num_motor));
             }
             if ((num_chasis == null)) {
                 throw new global::System.ArgumentNullException("num_chasis");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(num_chasis));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(num_chasis));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_IdVehiculo));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_year));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_IdVehiculo));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_year));
             if ((Original_num_motor == null)) {
                 throw new global::System.ArgumentNullException("Original_num_motor");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_num_motor));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_num_motor));
             }
             if ((Original_num_chasis == null)) {
                 throw new global::System.ArgumentNullException("Original_num_chasis");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_num_chasis));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_num_chasis));
             }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(IdVehiculo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1113,7 +1115,7 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string marca, string modelo, int year, string num_motor, string num_chasis, int Original_IdVehiculo, int Original_year, string Original_num_motor, string Original_num_chasis) {
-            return this.Update(Original_IdVehiculo, marca, modelo, year, num_motor, num_chasis, Original_IdVehiculo, Original_year, Original_num_motor, Original_num_chasis);
+            return this.Update(marca, modelo, year, num_motor, num_chasis, Original_IdVehiculo, Original_year, Original_num_motor, Original_num_chasis, Original_IdVehiculo);
         }
     }
     

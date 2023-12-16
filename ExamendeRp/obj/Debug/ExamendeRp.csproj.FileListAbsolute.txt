@@ -4,9 +4,9 @@ C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\bin\Debug\ExamendeRp.e
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\bin\Debug\ExamendeRp.exe
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\bin\Debug\ExamendeRp.pdb
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.csproj.AssemblyReference.cache
-C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.Form1.resources
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.Properties.Resources.resources
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.csproj.GenerateResource.cache
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.csproj.CoreCompileInputs.cache
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.exe
 C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.pdb
+C:\Users\wilbe\Source\Repos\ExamendeReposicion\ExamendeRp\obj\Debug\ExamendeRp.FormularioDeDatos.resources
