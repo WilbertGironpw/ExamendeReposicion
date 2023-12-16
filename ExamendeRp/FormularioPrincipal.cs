@@ -9,9 +9,7 @@ namespace ExamendeRp
     {
         private const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db_parque_vehicular_primer_apellido_primer_nombre.mdf;Integrated Security=True";
         private DataTable DataTable = new DataTable();
-
         private int currentRowIndex = -1;
-        private bool modoEdicion = false;
         public FormularioDeDatos()
         {
             InitializeComponent();
@@ -20,12 +18,6 @@ namespace ExamendeRp
 
         private void UpdateDataGridView()
         {
-            // Limpiar el DataGridView
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-
-            // Volver a configurar el DataGridView con el DataTable actualizado
             dataGridView1.DataSource = DataTable;
 
 
@@ -38,16 +30,19 @@ namespace ExamendeRp
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("SELECT IdVehiculo as IdVehiculo, marca as Marca, modelo as Modelo, year as Year, num_motor as Num_motor, num_chasis as Num_chasis FROM tbl_vehiculos", conn);
 
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dataGridView1.DataSource = dt;
+                DataTable.Clear();  // Limpiar el DataTable existente antes de cargar datos nuevos
+                da.Fill(DataTable);
+
+                UpdateDataGridView();  // Actualizar el DataGridView con el nuevo DataTable
                 dataGridView1.Columns[0].ReadOnly = true;
 
-                // Configura el DataGridView para usar el DataTable
-                dataGridView1.DataSource = DataTable;
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    Console.WriteLine(column.Name);
+                }
             }
         }
-        
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -133,7 +128,6 @@ namespace ExamendeRp
                 dataGridView1.DataSource = dt;
             }
         }
-
         private void PanelPrincipal_Paint(object sender, PaintEventArgs e)
         {
 
@@ -155,15 +149,16 @@ namespace ExamendeRp
             }
         }
 
-            private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtMarca.Clear();
             txtModelo.Clear();
             txtYear.Clear();
             txtNumMotor.Clear();
             txtNumChasis.Clear();
+            btnAgregar.Enabled = true
+            ;
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             // Verificar si hay una fila actual seleccionada
@@ -180,12 +175,12 @@ namespace ExamendeRp
                 // No hay fila seleccionada, manejar según sea necesario
                 MessageBox.Show("No hay fila seleccionada para editar.");
             }
+
+            btnAgregar.Enabled = false;
         }
 
         private void MostrarDatosEnTextBoxEditar(int rowIndex)
         {
-            Console.WriteLine($"MostrarDatosEnTextBox llamado con índice: {rowIndex}");
-
             if (rowIndex >= 0 && rowIndex < DataTable.Rows.Count)
             {
                 DataRow row = DataTable.Rows[rowIndex];
@@ -197,32 +192,91 @@ namespace ExamendeRp
                 txtNumMotor.Text = row["num_motor"].ToString();
                 txtNumChasis.Text = row["num_chasis"].ToString();
             }
-            else
-            {
-                Console.WriteLine("Índice fuera de rango");
-            }
         }
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (currentRowIndex >= 0 && currentRowIndex < DataTable.Rows.Count)
             {
-                // Actualizar los datos en la fila actual
                 DataRow row = DataTable.Rows[currentRowIndex];
                 row["marca"] = txtMarca.Text;
                 row["modelo"] = txtModelo.Text;
-                row["year"] = txtYear.Text;
+
+                if (int.TryParse(txtYear.Text, out int yearValue))
+                {
+                    row["year"] = yearValue;
+                }
+                else
+                {
+                    MessageBox.Show("El año debe ser un número entero válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 row["num_motor"] = txtNumMotor.Text;
                 row["num_chasis"] = txtNumChasis.Text;
 
-                // Guardar los cambios en el DataTable (si es necesario)
-                // DataTable.AcceptChanges(); // Puedes necesitar aceptar los cambios dependiendo de tu configuración
+                // Aquí puedes aceptar los cambios en el DataTable si es necesario
+                // DataTable.AcceptChanges();
 
-                // Actualizar la vista del DataGridView
-                UpdateDataGridView(); // Asume que ya tienes el método UpdateDataGridView implementado
+                UpdateDataGridView();  // Actualizar el DataGridView después de la edición
+
+                LimpiarTextBox();
             }
 
+            btnAgregar.Enabled = true;
+        }
 
+        private void LimpiarTextBox()
+        {
+            txtMarca.Clear();
+            txtModelo.Clear();
+            txtYear.Clear();
+            txtNumMotor.Clear();
+            txtNumChasis.Clear();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay una fila seleccionada
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtener el índice de la fila seleccionada
+                int rowIndex = dataGridView1.CurrentRow.Index;
+
+                // Obtener el valor de la columna que contiene el identificador único (por ejemplo, IdVehiculo)
+                int IdVehiculo = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["IdVehiculo"].Value);
+                // Confirmar con el usuario antes de eliminar
+                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // Eliminar la fila de la base de datos
+                    EliminarFilaDeBaseDeDatos(IdVehiculo);
+
+                    // Actualizar el DataGridView
+                    LoadData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay fila seleccionada para eliminar.", "Mensaje");
+            }
+        }
+
+        private void EliminarFilaDeBaseDeDatos(int idVehiculo)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Utiliza un comando SQL DELETE para eliminar la fila con el IdVehiculo específico
+                string query = "DELETE FROM tbl_vehiculos WHERE IdVehiculo = @IdVehiculo";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdVehiculo", idVehiculo);
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

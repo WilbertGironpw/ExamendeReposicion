@@ -55,6 +55,7 @@ namespace ExamendeRp
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.lblmarca = new System.Windows.Forms.Label();
             this.PanelPrincipal = new System.Windows.Forms.Panel();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.rdbChasis = new System.Windows.Forms.RadioButton();
             this.rdbMotor = new System.Windows.Forms.RadioButton();
             this.rdbYear = new System.Windows.Forms.RadioButton();
@@ -70,7 +71,6 @@ namespace ExamendeRp
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblvehiculosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetAdmBindingSource)).BeginInit();
@@ -82,6 +82,8 @@ namespace ExamendeRp
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -94,6 +96,7 @@ namespace ExamendeRp
             this.dataGridView1.DataSource = this.tblvehiculosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(29, 94);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(875, 494);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -110,30 +113,35 @@ namespace ExamendeRp
             this.marcaDataGridViewTextBoxColumn.DataPropertyName = "marca";
             this.marcaDataGridViewTextBoxColumn.HeaderText = "marca";
             this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
+            this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // modeloDataGridViewTextBoxColumn
             // 
             this.modeloDataGridViewTextBoxColumn.DataPropertyName = "modelo";
             this.modeloDataGridViewTextBoxColumn.HeaderText = "modelo";
             this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
+            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // yearDataGridViewTextBoxColumn
             // 
             this.yearDataGridViewTextBoxColumn.DataPropertyName = "year";
             this.yearDataGridViewTextBoxColumn.HeaderText = "year";
             this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nummotorDataGridViewTextBoxColumn
             // 
             this.nummotorDataGridViewTextBoxColumn.DataPropertyName = "num_motor";
             this.nummotorDataGridViewTextBoxColumn.HeaderText = "num_motor";
             this.nummotorDataGridViewTextBoxColumn.Name = "nummotorDataGridViewTextBoxColumn";
+            this.nummotorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numchasisDataGridViewTextBoxColumn
             // 
             this.numchasisDataGridViewTextBoxColumn.DataPropertyName = "num_chasis";
             this.numchasisDataGridViewTextBoxColumn.HeaderText = "num_chasis";
             this.numchasisDataGridViewTextBoxColumn.Name = "numchasisDataGridViewTextBoxColumn";
+            this.numchasisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tblvehiculosBindingSource
             // 
@@ -317,6 +325,16 @@ namespace ExamendeRp
             this.PanelPrincipal.TabIndex = 0;
             this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(440, 641);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 22;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // rdbChasis
             // 
             this.rdbChasis.AutoSize = true;
@@ -424,6 +442,7 @@ namespace ExamendeRp
             this.btnEliminar.TabIndex = 13;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // button7
             // 
@@ -460,16 +479,6 @@ namespace ExamendeRp
             this.button5.TabIndex = 2;
             this.button5.Text = "<";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(440, 641);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 22;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FormularioDeDatos
             // 
