@@ -42,25 +42,25 @@ namespace ExamendeRp
             this.datasetAdm = new ExamendeRp.DatasetAdm();
             this.tbl_vehiculosTableAdapter = new ExamendeRp.DatasetAdmTableAdapters.tbl_vehiculosTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PanelPrincipal = new System.Windows.Forms.Panel();
-            this.lblmarca = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.lblmodelo = new System.Windows.Forms.Label();
-            this.lblyear = new System.Windows.Forms.Label();
-            this.lblnumchasis = new System.Windows.Forms.Label();
-            this.lblnummotor = new System.Windows.Forms.Label();
-            this.txtModelo = new System.Windows.Forms.TextBox();
-            this.txtNumChasis = new System.Windows.Forms.TextBox();
-            this.txtNumMotor = new System.Windows.Forms.TextBox();
-            this.txtYear = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtYear = new System.Windows.Forms.TextBox();
+            this.txtNumMotor = new System.Windows.Forms.TextBox();
+            this.txtNumChasis = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.lblnummotor = new System.Windows.Forms.Label();
+            this.lblnumchasis = new System.Windows.Forms.Label();
+            this.lblyear = new System.Windows.Forms.Label();
+            this.lblmodelo = new System.Windows.Forms.Label();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.lblmarca = new System.Windows.Forms.Label();
+            this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblvehiculosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetAdmBindingSource)).BeginInit();
@@ -143,6 +143,7 @@ namespace ExamendeRp
             // 
             // datasetAdm
             // 
+            this.datasetAdm.CaseSensitive = true;
             this.datasetAdm.DataSetName = "DatasetAdm";
             this.datasetAdm.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
@@ -173,6 +174,117 @@ namespace ExamendeRp
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingredar o Editar Datos";
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(267, 411);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAgregar.Location = new System.Drawing.Point(157, 411);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(73, 23);
+            this.btnAgregar.TabIndex = 10;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtYear
+            // 
+            this.txtYear.Location = new System.Drawing.Point(146, 207);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(220, 20);
+            this.txtYear.TabIndex = 9;
+            // 
+            // txtNumMotor
+            // 
+            this.txtNumMotor.Location = new System.Drawing.Point(146, 266);
+            this.txtNumMotor.Name = "txtNumMotor";
+            this.txtNumMotor.Size = new System.Drawing.Size(220, 20);
+            this.txtNumMotor.TabIndex = 8;
+            // 
+            // txtNumChasis
+            // 
+            this.txtNumChasis.Location = new System.Drawing.Point(146, 326);
+            this.txtNumChasis.Name = "txtNumChasis";
+            this.txtNumChasis.Size = new System.Drawing.Size(220, 20);
+            this.txtNumChasis.TabIndex = 7;
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.Location = new System.Drawing.Point(146, 142);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(220, 20);
+            this.txtModelo.TabIndex = 6;
+            // 
+            // lblnummotor
+            // 
+            this.lblnummotor.AutoSize = true;
+            this.lblnummotor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnummotor.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblnummotor.Location = new System.Drawing.Point(17, 271);
+            this.lblnummotor.Name = "lblnummotor";
+            this.lblnummotor.Size = new System.Drawing.Size(123, 15);
+            this.lblnummotor.TabIndex = 5;
+            this.lblnummotor.Text = "Numero de Motor:";
+            // 
+            // lblnumchasis
+            // 
+            this.lblnumchasis.AutoSize = true;
+            this.lblnumchasis.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnumchasis.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblnumchasis.Location = new System.Drawing.Point(11, 331);
+            this.lblnumchasis.Name = "lblnumchasis";
+            this.lblnumchasis.Size = new System.Drawing.Size(129, 15);
+            this.lblnumchasis.TabIndex = 4;
+            this.lblnumchasis.Text = "Numero de Chasis:";
+            // 
+            // lblyear
+            // 
+            this.lblyear.AutoSize = true;
+            this.lblyear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblyear.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblyear.Location = new System.Drawing.Point(104, 212);
+            this.lblyear.Name = "lblyear";
+            this.lblyear.Size = new System.Drawing.Size(36, 15);
+            this.lblyear.TabIndex = 3;
+            this.lblyear.Text = "Año:";
+            // 
+            // lblmodelo
+            // 
+            this.lblmodelo.AutoSize = true;
+            this.lblmodelo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmodelo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblmodelo.Location = new System.Drawing.Point(82, 147);
+            this.lblmodelo.Name = "lblmodelo";
+            this.lblmodelo.Size = new System.Drawing.Size(58, 15);
+            this.lblmodelo.TabIndex = 2;
+            this.lblmodelo.Text = "Modelo:";
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(146, 82);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(220, 20);
+            this.txtMarca.TabIndex = 1;
+            // 
+            // lblmarca
+            // 
+            this.lblmarca.AutoSize = true;
+            this.lblmarca.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmarca.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblmarca.Location = new System.Drawing.Point(88, 87);
+            this.lblmarca.Name = "lblmarca";
+            this.lblmarca.Size = new System.Drawing.Size(52, 15);
+            this.lblmarca.TabIndex = 0;
+            this.lblmarca.Text = "Marca:";
+            // 
             // PanelPrincipal
             // 
             this.PanelPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -190,117 +302,6 @@ namespace ExamendeRp
             this.PanelPrincipal.Size = new System.Drawing.Size(1347, 702);
             this.PanelPrincipal.TabIndex = 0;
             this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
-            // 
-            // lblmarca
-            // 
-            this.lblmarca.AutoSize = true;
-            this.lblmarca.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmarca.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblmarca.Location = new System.Drawing.Point(88, 87);
-            this.lblmarca.Name = "lblmarca";
-            this.lblmarca.Size = new System.Drawing.Size(52, 15);
-            this.lblmarca.TabIndex = 0;
-            this.lblmarca.Text = "Marca:";
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.Location = new System.Drawing.Point(146, 82);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(220, 20);
-            this.txtMarca.TabIndex = 1;
-            // 
-            // lblmodelo
-            // 
-            this.lblmodelo.AutoSize = true;
-            this.lblmodelo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmodelo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblmodelo.Location = new System.Drawing.Point(82, 147);
-            this.lblmodelo.Name = "lblmodelo";
-            this.lblmodelo.Size = new System.Drawing.Size(58, 15);
-            this.lblmodelo.TabIndex = 2;
-            this.lblmodelo.Text = "Modelo:";
-            // 
-            // lblyear
-            // 
-            this.lblyear.AutoSize = true;
-            this.lblyear.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblyear.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblyear.Location = new System.Drawing.Point(104, 212);
-            this.lblyear.Name = "lblyear";
-            this.lblyear.Size = new System.Drawing.Size(36, 15);
-            this.lblyear.TabIndex = 3;
-            this.lblyear.Text = "Año:";
-            // 
-            // lblnumchasis
-            // 
-            this.lblnumchasis.AutoSize = true;
-            this.lblnumchasis.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnumchasis.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblnumchasis.Location = new System.Drawing.Point(11, 331);
-            this.lblnumchasis.Name = "lblnumchasis";
-            this.lblnumchasis.Size = new System.Drawing.Size(129, 15);
-            this.lblnumchasis.TabIndex = 4;
-            this.lblnumchasis.Text = "Numero de Chasis:";
-            // 
-            // lblnummotor
-            // 
-            this.lblnummotor.AutoSize = true;
-            this.lblnummotor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnummotor.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblnummotor.Location = new System.Drawing.Point(17, 271);
-            this.lblnummotor.Name = "lblnummotor";
-            this.lblnummotor.Size = new System.Drawing.Size(123, 15);
-            this.lblnummotor.TabIndex = 5;
-            this.lblnummotor.Text = "Numero de Motor:";
-            // 
-            // txtModelo
-            // 
-            this.txtModelo.Location = new System.Drawing.Point(146, 142);
-            this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(220, 20);
-            this.txtModelo.TabIndex = 6;
-            // 
-            // txtNumChasis
-            // 
-            this.txtNumChasis.Location = new System.Drawing.Point(146, 326);
-            this.txtNumChasis.Name = "txtNumChasis";
-            this.txtNumChasis.Size = new System.Drawing.Size(220, 20);
-            this.txtNumChasis.TabIndex = 7;
-            // 
-            // txtNumMotor
-            // 
-            this.txtNumMotor.Location = new System.Drawing.Point(146, 266);
-            this.txtNumMotor.Name = "txtNumMotor";
-            this.txtNumMotor.Size = new System.Drawing.Size(220, 20);
-            this.txtNumMotor.TabIndex = 8;
-            // 
-            // txtYear
-            // 
-            this.txtYear.Location = new System.Drawing.Point(146, 207);
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(220, 20);
-            this.txtYear.TabIndex = 9;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAgregar.Location = new System.Drawing.Point(155, 411);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 10;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(267, 411);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
@@ -321,23 +322,14 @@ namespace ExamendeRp
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button7
             // 
-            this.button5.Location = new System.Drawing.Point(453, 596);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(22, 39);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "<";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(481, 596);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(22, 39);
-            this.button6.TabIndex = 3;
-            this.button6.Text = ">";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button7.Location = new System.Drawing.Point(509, 605);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(40, 21);
+            this.button7.TabIndex = 6;
+            this.button7.Text = ">>";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -348,14 +340,23 @@ namespace ExamendeRp
             this.button8.Text = "<<";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // button6
             // 
-            this.button7.Location = new System.Drawing.Point(509, 605);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 21);
-            this.button7.TabIndex = 6;
-            this.button7.Text = ">>";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button6.Location = new System.Drawing.Point(481, 596);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(22, 39);
+            this.button6.TabIndex = 3;
+            this.button6.Text = ">";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(453, 596);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(22, 39);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "<";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // FormularioDeDatos
             // 

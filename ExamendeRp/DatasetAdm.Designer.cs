@@ -202,6 +202,7 @@ namespace ExamendeRp {
             this.DataSetName = "DatasetAdm";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/DatasetAdm.xsd";
+            this.CaseSensitive = true;
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tabletbl_vehiculos = new tbl_vehiculosDataTable();

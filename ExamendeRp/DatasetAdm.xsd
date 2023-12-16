@@ -76,10 +76,10 @@ SELECT IdVehiculo, marca, modelo, year, num_motor, num_chasis FROM tbl_vehiculos
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DatasetAdm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatasetAdm" msprop:Generator_UserDSName="DatasetAdm">
+  <xs:element name="DatasetAdm" msdata:IsDataSet="true" msdata:CaseSensitive="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatasetAdm" msprop:Generator_UserDSName="DatasetAdm">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_vehiculos" msprop:Generator_TableClassName="tbl_vehiculosDataTable" msprop:Generator_TableVarName="tabletbl_vehiculos" msprop:Generator_TablePropName="tbl_vehiculos" msprop:Generator_RowDeletingName="tbl_vehiculosRowDeleting" msprop:Generator_RowChangingName="tbl_vehiculosRowChanging" msprop:Generator_RowEvHandlerName="tbl_vehiculosRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_vehiculosRowDeleted" msprop:Generator_UserTableName="tbl_vehiculos" msprop:Generator_RowChangedName="tbl_vehiculosRowChanged" msprop:Generator_RowEvArgName="tbl_vehiculosRowChangeEvent" msprop:Generator_RowClassName="tbl_vehiculosRow">
+        <xs:element name="tbl_vehiculos" msprop:Generator_TableClassName="tbl_vehiculosDataTable" msprop:Generator_TableVarName="tabletbl_vehiculos" msprop:Generator_RowChangedName="tbl_vehiculosRowChanged" msprop:Generator_TablePropName="tbl_vehiculos" msprop:Generator_RowDeletingName="tbl_vehiculosRowDeleting" msprop:Generator_RowChangingName="tbl_vehiculosRowChanging" msprop:Generator_RowEvHandlerName="tbl_vehiculosRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_vehiculosRowDeleted" msprop:Generator_RowClassName="tbl_vehiculosRow" msprop:Generator_UserTableName="tbl_vehiculos" msprop:Generator_RowEvArgName="tbl_vehiculosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdVehiculo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdVehiculo" msprop:Generator_ColumnPropNameInRow="IdVehiculo" msprop:Generator_ColumnPropNameInTable="IdVehiculoColumn" msprop:Generator_UserColumnName="IdVehiculo" type="xs:int" />

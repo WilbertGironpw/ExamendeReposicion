@@ -62,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="DatasetAdm.cs">
+      <DependentUpon>DatasetAdm.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatasetAdm.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
