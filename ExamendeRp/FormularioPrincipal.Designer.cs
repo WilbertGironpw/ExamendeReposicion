@@ -66,10 +66,6 @@ namespace ExamendeRp
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblvehiculosBindingSource)).BeginInit();
@@ -314,10 +310,6 @@ namespace ExamendeRp
             this.PanelPrincipal.Controls.Add(this.txtBusqueda);
             this.PanelPrincipal.Controls.Add(this.btnEditar);
             this.PanelPrincipal.Controls.Add(this.btnEliminar);
-            this.PanelPrincipal.Controls.Add(this.button7);
-            this.PanelPrincipal.Controls.Add(this.button8);
-            this.PanelPrincipal.Controls.Add(this.button6);
-            this.PanelPrincipal.Controls.Add(this.button5);
             this.PanelPrincipal.Controls.Add(this.groupBox1);
             this.PanelPrincipal.Location = new System.Drawing.Point(-1, -2);
             this.PanelPrincipal.Name = "PanelPrincipal";
@@ -327,7 +319,7 @@ namespace ExamendeRp
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(440, 641);
+            this.btnGuardar.Location = new System.Drawing.Point(436, 605);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 22;
@@ -444,42 +436,6 @@ namespace ExamendeRp
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(509, 605);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 21);
-            this.button7.TabIndex = 6;
-            this.button7.Text = ">>";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(407, 604);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(40, 21);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "<<";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(481, 596);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(22, 39);
-            this.button6.TabIndex = 3;
-            this.button6.Text = ">";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(453, 596);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(22, 39);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "<";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // FormularioDeDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,10 +488,6 @@ namespace ExamendeRp
         private System.Windows.Forms.Label lblyear;
         private System.Windows.Forms.Label lblmodelo;
         private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Button btnBuscar;
