@@ -55,24 +55,33 @@ namespace ExamendeRp
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.lblmarca = new System.Windows.Forms.Label();
             this.PanelPrincipal = new System.Windows.Forms.Panel();
+            this.rdbChasis = new System.Windows.Forms.RadioButton();
+            this.rdbMotor = new System.Windows.Forms.RadioButton();
+            this.rdbYear = new System.Windows.Forms.RadioButton();
+            this.rdbModelo = new System.Windows.Forms.RadioButton();
+            this.rdbMarca = new System.Windows.Forms.RadioButton();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblBuscar = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblvehiculosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetAdmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetAdm)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.PanelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -101,35 +110,30 @@ namespace ExamendeRp
             this.marcaDataGridViewTextBoxColumn.DataPropertyName = "marca";
             this.marcaDataGridViewTextBoxColumn.HeaderText = "marca";
             this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
-            this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // modeloDataGridViewTextBoxColumn
             // 
             this.modeloDataGridViewTextBoxColumn.DataPropertyName = "modelo";
             this.modeloDataGridViewTextBoxColumn.HeaderText = "modelo";
             this.modeloDataGridViewTextBoxColumn.Name = "modeloDataGridViewTextBoxColumn";
-            this.modeloDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // yearDataGridViewTextBoxColumn
             // 
             this.yearDataGridViewTextBoxColumn.DataPropertyName = "year";
             this.yearDataGridViewTextBoxColumn.HeaderText = "year";
             this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
-            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nummotorDataGridViewTextBoxColumn
             // 
             this.nummotorDataGridViewTextBoxColumn.DataPropertyName = "num_motor";
             this.nummotorDataGridViewTextBoxColumn.HeaderText = "num_motor";
             this.nummotorDataGridViewTextBoxColumn.Name = "nummotorDataGridViewTextBoxColumn";
-            this.nummotorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numchasisDataGridViewTextBoxColumn
             // 
             this.numchasisDataGridViewTextBoxColumn.DataPropertyName = "num_chasis";
             this.numchasisDataGridViewTextBoxColumn.HeaderText = "num_chasis";
             this.numchasisDataGridViewTextBoxColumn.Name = "numchasisDataGridViewTextBoxColumn";
-            this.numchasisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tblvehiculosBindingSource
             // 
@@ -183,6 +187,7 @@ namespace ExamendeRp
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregar
             // 
@@ -290,6 +295,15 @@ namespace ExamendeRp
             this.PanelPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelPrincipal.Controls.Add(this.btnGuardar);
+            this.PanelPrincipal.Controls.Add(this.rdbChasis);
+            this.PanelPrincipal.Controls.Add(this.rdbMotor);
+            this.PanelPrincipal.Controls.Add(this.rdbYear);
+            this.PanelPrincipal.Controls.Add(this.rdbModelo);
+            this.PanelPrincipal.Controls.Add(this.rdbMarca);
+            this.PanelPrincipal.Controls.Add(this.btnBuscar);
+            this.PanelPrincipal.Controls.Add(this.lblBuscar);
+            this.PanelPrincipal.Controls.Add(this.txtBusqueda);
             this.PanelPrincipal.Controls.Add(this.btnEditar);
             this.PanelPrincipal.Controls.Add(this.btnEliminar);
             this.PanelPrincipal.Controls.Add(this.button7);
@@ -301,6 +315,95 @@ namespace ExamendeRp
             this.PanelPrincipal.Name = "PanelPrincipal";
             this.PanelPrincipal.Size = new System.Drawing.Size(1347, 702);
             this.PanelPrincipal.TabIndex = 0;
+            this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
+            // 
+            // rdbChasis
+            // 
+            this.rdbChasis.AutoSize = true;
+            this.rdbChasis.ForeColor = System.Drawing.SystemColors.Control;
+            this.rdbChasis.Location = new System.Drawing.Point(355, 40);
+            this.rdbChasis.Name = "rdbChasis";
+            this.rdbChasis.Size = new System.Drawing.Size(56, 17);
+            this.rdbChasis.TabIndex = 21;
+            this.rdbChasis.TabStop = true;
+            this.rdbChasis.Text = "Chasis";
+            this.rdbChasis.UseVisualStyleBackColor = true;
+            // 
+            // rdbMotor
+            // 
+            this.rdbMotor.AutoSize = true;
+            this.rdbMotor.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdbMotor.Location = new System.Drawing.Point(297, 40);
+            this.rdbMotor.Name = "rdbMotor";
+            this.rdbMotor.Size = new System.Drawing.Size(52, 17);
+            this.rdbMotor.TabIndex = 20;
+            this.rdbMotor.TabStop = true;
+            this.rdbMotor.Text = "Motor";
+            this.rdbMotor.UseVisualStyleBackColor = true;
+            // 
+            // rdbYear
+            // 
+            this.rdbYear.AutoSize = true;
+            this.rdbYear.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdbYear.Location = new System.Drawing.Point(247, 40);
+            this.rdbYear.Name = "rdbYear";
+            this.rdbYear.Size = new System.Drawing.Size(44, 17);
+            this.rdbYear.TabIndex = 19;
+            this.rdbYear.TabStop = true;
+            this.rdbYear.Text = "Año";
+            this.rdbYear.UseVisualStyleBackColor = true;
+            // 
+            // rdbModelo
+            // 
+            this.rdbModelo.AutoSize = true;
+            this.rdbModelo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdbModelo.Location = new System.Drawing.Point(181, 41);
+            this.rdbModelo.Name = "rdbModelo";
+            this.rdbModelo.Size = new System.Drawing.Size(60, 17);
+            this.rdbModelo.TabIndex = 18;
+            this.rdbModelo.TabStop = true;
+            this.rdbModelo.Text = "Modelo";
+            this.rdbModelo.UseVisualStyleBackColor = true;
+            // 
+            // rdbMarca
+            // 
+            this.rdbMarca.AutoSize = true;
+            this.rdbMarca.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rdbMarca.Location = new System.Drawing.Point(120, 40);
+            this.rdbMarca.Name = "rdbMarca";
+            this.rdbMarca.Size = new System.Drawing.Size(55, 17);
+            this.rdbMarca.TabIndex = 17;
+            this.rdbMarca.TabStop = true;
+            this.rdbMarca.Text = "Marca";
+            this.rdbMarca.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(686, 11);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(79, 23);
+            this.btnBuscar.TabIndex = 16;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // lblBuscar
+            // 
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblBuscar.Location = new System.Drawing.Point(26, 14);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(88, 20);
+            this.lblBuscar.TabIndex = 15;
+            this.lblBuscar.Text = "BUSCAR:";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(120, 14);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(560, 20);
+            this.txtBusqueda.TabIndex = 14;
             // 
             // btnEditar
             // 
@@ -311,6 +414,7 @@ namespace ExamendeRp
             this.btnEditar.TabIndex = 12;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -357,6 +461,16 @@ namespace ExamendeRp
             this.button5.Text = "<";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(440, 641);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 22;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // FormularioDeDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,6 +488,8 @@ namespace ExamendeRp
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.PanelPrincipal.ResumeLayout(false);
+            this.PanelPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -411,6 +527,16 @@ namespace ExamendeRp
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.RadioButton rdbMarca;
+        private System.Windows.Forms.RadioButton rdbChasis;
+        private System.Windows.Forms.RadioButton rdbMotor;
+        private System.Windows.Forms.RadioButton rdbYear;
+        private System.Windows.Forms.RadioButton rdbModelo;
+        private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
 
