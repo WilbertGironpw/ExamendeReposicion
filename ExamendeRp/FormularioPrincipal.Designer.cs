@@ -85,9 +85,9 @@ namespace ExamendeRp
             this.dataGridView1.DataSource = this.tblvehiculosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(29, 94);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(875, 494);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // idVehiculoDataGridViewTextBoxColumn
             // 
@@ -301,7 +301,6 @@ namespace ExamendeRp
             this.PanelPrincipal.Name = "PanelPrincipal";
             this.PanelPrincipal.Size = new System.Drawing.Size(1347, 702);
             this.PanelPrincipal.TabIndex = 0;
-            this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
             // 
             // btnEditar
             // 
@@ -368,7 +367,6 @@ namespace ExamendeRp
             this.Controls.Add(this.PanelPrincipal);
             this.Name = "FormularioDeDatos";
             this.Text = "Administracion";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblvehiculosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datasetAdmBindingSource)).EndInit();
