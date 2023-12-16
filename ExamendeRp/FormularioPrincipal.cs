@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
-using ExamendeRp.Properties;
+using System.IO;
 
 namespace ExamendeRp
 {
@@ -36,27 +35,20 @@ namespace ExamendeRp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'datasetAdm.tbl_vehiculos' Puede moverla o quitarla según sea necesario.
             this.tbl_vehiculosTableAdapter.Fill(this.datasetAdm.tbl_vehiculos);
-
         }
-
         private void PanelPrincipal_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            string marca = txtMarca.Text;
+            string modelo = txtModelo.Text;
+            string num_motor = txtNumMotor.Text;
+            string num_chasis = txtNumChasis.Text;
             if (int.TryParse(txtYear.Text, out int year))
             {
-                // Obtén los demás datos de los TextBox
-                string marca = txtMarca.Text;
-                string modelo = txtModelo.Text;
-                string numMotor = txtNumMotor.Text;
-                string numChasis = txtNumChasis.Text;
-
                 if (marca.Length == 1)
                 {
                     MessageBox.Show("Datos invalidos.");
@@ -74,35 +66,35 @@ namespace ExamendeRp
                     return;
                 }
 
-                if (numMotor.Length == 2)
+                if (num_motor.Length == 2)
                 {
                     MessageBox.Show("Datos invalidos.");
                     return;
                 }
-                if (numChasis.Length == 2)
+                if (num_chasis.Length == 2)
                 {
                     MessageBox.Show("Datos invalidos.");
                     return;
                 }
             }
-            SqlConnection conexion = new SqlConnection(@"Data Source=TuServidor;Initial Catalog=db_parque_vehicular_primer_apellido_primer_nombre;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db_parque_vehicular_primer_apellido_primer_nombre.mdf;Integrated Security=True");
             conexion.Open();
             SqlCommand comando = new SqlCommand("INSERT INTO tbl_vehiculos (marca, modelo, year, num_motor, num_chasis,) VALUES (@marca, @modelo, @year, @num_motor, @num_chasis,)", conexion);
-            comando.Parameters.AddWithValue("@marca", txtMarca);
-            comando.Parameters.AddWithValue("@modelo", txtModelo);
-            comando.Parameters.AddWithValue("@year", txtYear);
-            comando.Parameters.AddWithValue("@num_motor", txtNumMotor);
-            comando.Parameters.AddWithValue("@num_chasis", txtNumChasis);
+            comando.Parameters.AddWithValue("@marca", marca);
+            comando.Parameters.AddWithValue("@modelo", modelo);
+            comando.Parameters.AddWithValue("@year", year);
+            comando.Parameters.AddWithValue("@num_motor", num_motor);
+            comando.Parameters.AddWithValue("@num_chasis", num_chasis);
             comando.ExecuteNonQuery();
             conexion.Close();
             MessageBox.Show("Los datos se ingresaron correctamente");
 
             DataRow nuevaFila = miTabla.NewRow();
-            nuevaFila["marca"] = txtMarca;
-            nuevaFila["modelo"] = txtModelo;
-            nuevaFila["year"] = txtYear;
-            nuevaFila["num_motor"] = txtNumMotor ;
-            nuevaFila["num_chasis"] =txtNumChasis;
+            nuevaFila["marca"] = marca;
+            nuevaFila["modelo"] = modelo;
+            nuevaFila["year"] = year;
+            nuevaFila["num_motor"] = num_motor;
+            nuevaFila["num_chasis"] =num_chasis;
             miTabla.Rows.Add(nuevaFila);
 
             mostrarDatos();

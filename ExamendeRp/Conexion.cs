@@ -1,95 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Sql;
+using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
+using System.IO;
 
 namespace ExamendeRp
 {
-    public class Conexion
+    class Conexion
     {
-        private SqlConnection sqlConnection;
-        private string connectionString = "Data Source=TuServidor;Initial Catalog=db_parque_vehicular_primer_apellido_primer_nombre;Integrated Security=True";
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db_parque_vehicular_primer_apellido_primer_nombre.mdf;Integrated Security=True";
 
-        public Conexion()
+        public void EjecutarConsulta(string query)
         {
-            sqlConnection = new SqlConnection(connectionString);
-        }
-
-        public DataTable BuscarVehiculos(string marca, string modelo, int year, string numMotor, string numChasis)
-        {
-            DataTable dataTable = new DataTable();
-
-            try
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
-                sqlConnection.Open();
-                string query = "SELECT * FROM tbl_vehiculos WHERE marca LIKE @marca AND modelo LIKE @modelo AND year = @year AND num_motor LIKE @numMotor AND num_chasis LIKE @numChasis";
-                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
+                using (SqlCommand comando = new SqlCommand(query, conexion))
                 {
-                    sqlCommand.Parameters.AddWithValue("@marca", "%" + marca + "%");
-                    sqlCommand.Parameters.AddWithValue("@modelo", "%" + modelo + "%");
-                    sqlCommand.Parameters.AddWithValue("@year", year);
-                    sqlCommand.Parameters.AddWithValue("@numMotor", "%" + numMotor + "%");
-                    sqlCommand.Parameters.AddWithValue("@numChasis", "%" + numChasis + "%");
-
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                    sqlDataAdapter.Fill(dataTable);
+                    conexion.Open();
+                    comando.ExecuteNonQuery();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Manejar excepciones
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-
-            return dataTable;
-        }
-
-        public void AdministrarVehiculos(string marca, string modelo, int year, string numMotor, string numChasis, string accion, int idVehiculo = 0)
-        {
-            try
-            {
-                sqlConnection.Open();
-                string query = "";
-
-                if (accion == "INSERT")
-                {
-                    query = "INSERT INTO tbl_vehiculos (marca, modelo, year, num_motor, num_chasis) VALUES (@marca, @modelo, @year, @numMotor, @numChasis)";
-                }
-                else if (accion == "UPDATE")
-                {
-                    query = "UPDATE tbl_vehiculos SET marca = @marca, modelo = @modelo, year = @year, num_motor = @numMotor, num_chasis = @numChasis WHERE idVehiculo = @idVehiculo";
-                }
-                else if (accion == "DELETE")
-                {
-                    query = "DELETE FROM tbl_vehiculos WHERE idVehiculo = @idVehiculo";
-                }
-
-                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
-                {
-                    sqlCommand.Parameters.AddWithValue("@marca", marca);
-                    sqlCommand.Parameters.AddWithValue("@modelo", modelo);
-                    sqlCommand.Parameters.AddWithValue("@year", year);
-                    sqlCommand.Parameters.AddWithValue("@numMotor", numMotor);
-                    sqlCommand.Parameters.AddWithValue("@numChasis", numChasis);
-                    sqlCommand.Parameters.AddWithValue("@idVehiculo", idVehiculo);
-
-                    sqlCommand.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar excepciones
-            }
-            finally
-            {
-                sqlConnection.Close();
             }
         }
     }

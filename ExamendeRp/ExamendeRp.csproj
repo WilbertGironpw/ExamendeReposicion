@@ -67,16 +67,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatasetAdm.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Formulario Principal.cs">
+    <Compile Include="FormularioPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulario Principal.Designer.cs">
-      <DependentUpon>Formulario Principal.cs</DependentUpon>
+    <Compile Include="FormularioPrincipal.Designer.cs">
+      <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formulario Principal.resx">
-      <DependentUpon>Formulario Principal.cs</DependentUpon>
+    <EmbeddedResource Include="FormularioPrincipal.resx">
+      <DependentUpon>FormularioPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
