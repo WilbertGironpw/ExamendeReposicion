@@ -7,14 +7,20 @@ namespace ExamendeRp
 {
     public partial class FormularioDeDatos : Form
     {
+
+
+
         private const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\db_parque_vehicular_primer_apellido_primer_nombre.mdf;Integrated Security=True";
         private DataTable DataTable = new DataTable();
         private int currentRowIndex = -1;
+
         public FormularioDeDatos()
         {
             InitializeComponent();
             LoadData();
         }
+
+
 
         private void UpdateDataGridView()
         {
@@ -30,12 +36,11 @@ namespace ExamendeRp
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("SELECT IdVehiculo as IdVehiculo, marca as Marca, modelo as Modelo, year as Year, num_motor as Num_motor, num_chasis as Num_chasis FROM tbl_vehiculos", conn);
 
-                DataTable.Clear();  // Limpiar el DataTable existente antes de cargar datos nuevos
+                DataTable.Clear(); 
                 da.Fill(DataTable);
 
-                UpdateDataGridView();  // Actualizar el DataGridView con el nuevo DataTable
+                UpdateDataGridView(); 
                 dataGridView1.Columns[0].ReadOnly = true;
-
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
                 {
                     Console.WriteLine(column.Name);
@@ -135,12 +140,10 @@ namespace ExamendeRp
 
         private void MostrarDatosEnTextBox(int rowIndex)
         {
-            // Verificar si el índice es válido
             if (rowIndex >= 0 && rowIndex < DataTable.Rows.Count)
             {
                 DataRow row = DataTable.Rows[rowIndex];
 
-                // Mostrar los datos en TextBox
                 txtMarca.Text = row["marca"].ToString();
                 txtModelo.Text = row["modelo"].ToString();
                 txtYear.Text = row["year"].ToString();
@@ -161,18 +164,14 @@ namespace ExamendeRp
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            // Verificar si hay una fila actual seleccionada
             if (dataGridView1.CurrentRow != null)
             {
-                // Obtener el índice de la fila actual
                 currentRowIndex = dataGridView1.CurrentRow.Index;
 
-                // Mostrar los datos en TextBox para su edición
                 MostrarDatosEnTextBox(currentRowIndex);
             }
             else
             {
-                // No hay fila seleccionada, manejar según sea necesario
                 MessageBox.Show("No hay fila seleccionada para editar.");
             }
 
@@ -184,8 +183,6 @@ namespace ExamendeRp
             if (rowIndex >= 0 && rowIndex < DataTable.Rows.Count)
             {
                 DataRow row = DataTable.Rows[rowIndex];
-
-                // Mostrar los datos en TextBox
                 txtMarca.Text = row["marca"].ToString();
                 txtModelo.Text = row["modelo"].ToString();
                 txtYear.Text = row["year"].ToString();
@@ -216,10 +213,7 @@ namespace ExamendeRp
                 row["num_motor"] = txtNumMotor.Text;
                 row["num_chasis"] = txtNumChasis.Text;
 
-                // Aquí puedes aceptar los cambios en el DataTable si es necesario
-                // DataTable.AcceptChanges();
-
-                UpdateDataGridView();  // Actualizar el DataGridView después de la edición
+                UpdateDataGridView(); 
 
                 LimpiarTextBox();
             }
@@ -238,23 +232,16 @@ namespace ExamendeRp
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            // Verificar si hay una fila seleccionada
             if (dataGridView1.CurrentRow != null)
             {
-                // Obtener el índice de la fila seleccionada
                 int rowIndex = dataGridView1.CurrentRow.Index;
+                int idVehiculo = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["IdVehiculo"].Value);
 
-                // Obtener el valor de la columna que contiene el identificador único (por ejemplo, IdVehiculo)
-                int IdVehiculo = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["IdVehiculo"].Value);
-                // Confirmar con el usuario antes de eliminar
                 DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resultado == DialogResult.Yes)
                 {
-                    // Eliminar la fila de la base de datos
-                    EliminarFilaDeBaseDeDatos(IdVehiculo);
-
-                    // Actualizar el DataGridView
+                    EliminarFilaDeBaseDeDatos(idVehiculo);
                     LoadData();
                 }
             }
@@ -262,15 +249,15 @@ namespace ExamendeRp
             {
                 MessageBox.Show("No hay fila seleccionada para eliminar.", "Mensaje");
             }
-        }
 
+
+        }
         private void EliminarFilaDeBaseDeDatos(int idVehiculo)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                // Utiliza un comando SQL DELETE para eliminar la fila con el IdVehiculo específico
                 string query = "DELETE FROM tbl_vehiculos WHERE IdVehiculo = @IdVehiculo";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@IdVehiculo", idVehiculo);
@@ -278,5 +265,6 @@ namespace ExamendeRp
                 cmd.ExecuteNonQuery();
             }
         }
+
     }
 }
